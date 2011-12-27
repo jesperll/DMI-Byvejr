@@ -18,6 +18,8 @@
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\DMI Byvejr\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,7 +90,5 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />
-  <Target Name="BeforeBuild">
-    <Exec Condition="Exists('$(ProjectDir)packages.config')" Command="&quot;$(SolutionDir)Tools\nuget.exe&quot; install &quot;$(ProjectDir)packages.config&quot; -o &quot;$(SolutionDir)Packages&quot;" />
-  </Target>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

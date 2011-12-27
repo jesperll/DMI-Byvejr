@@ -19,6 +19,8 @@
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\DMI Byvejr\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -120,11 +122,9 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />
-  <Target Name="BeforeBuild">
-    <Exec Condition="Exists('$(ProjectDir)packages.config')" Command="&quot;$(SolutionDir)Tools\nuget.exe&quot; install &quot;$(ProjectDir)packages.config&quot; -o &quot;$(SolutionDir)Packages&quot;" />
-  </Target>
-  <UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" AssemblyFile="$(SolutionDir)Tools\NotifyPropertyWeaverMsBuildTask.dll" />
+  <UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" AssemblyFile="$(SolutionDir).tools\NotifyPropertyWeaverMsBuildTask.dll" />
   <Target Name="AfterCompile">
     <NotifyPropertyWeaverMsBuildTask.WeavingTask />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

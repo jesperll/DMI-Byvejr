@@ -23,9 +23,6 @@
     <phone:PhoneApplicationPage.DataContext>
         <viewmodels:SupportPageViewModel />
     </phone:PhoneApplicationPage.DataContext>
-    <phone:PhoneApplicationPage.Resources>
-        <assets:BoolToToggleConverter x:Key="BoolToToggleConverter" />
-    </phone:PhoneApplicationPage.Resources>
     <Grid>
         <controls:Pivot Title="{Binding Resources.AppTitle, Source={StaticResource AppResources}}">
             <controls:PivotItem Header="{Binding Resources.SupportHeader, Source={StaticResource AppResources}}">

@@ -27,6 +27,8 @@
     <Utf8Output>true</Utf8Output>
     <ExpressionBlendVersion>4.0.30701.0</ExpressionBlendVersion>
     <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\DMI Byvejr\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,14 +60,29 @@
     <Reference Include="GalaSoft.MvvmLight.WP71">
       <HintPath>..\packages\MvvmLightLibs.3.0.3\lib\sl4-windowsphone71\GalaSoft.MvvmLight.WP71.dll</HintPath>
     </Reference>
-    <Reference Include="ImageTools">
-      <HintPath>..\lib\ImageTools\ImageTools.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZLib.Phone">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\ICSharpCode.SharpZLib.Phone.dll</HintPath>
     </Reference>
-    <Reference Include="ImageTools.Controls">
-      <HintPath>..\lib\ImageTools\ImageTools.Controls.dll</HintPath>
+    <Reference Include="ImageTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\ImageTools.dll</HintPath>
     </Reference>
-    <Reference Include="ImageTools.IO.Gif">
-      <HintPath>..\lib\ImageTools\ImageTools.IO.Gif.dll</HintPath>
+    <Reference Include="ImageTools.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\ImageTools.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Filtering">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\ImageTools.Filtering.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Bmp">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\ImageTools.IO.Bmp.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Gif, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\ImageTools.IO.Gif.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Png, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\ImageTools.IO.Png.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\ImageTools.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
@@ -75,6 +92,9 @@
       <HintPath>..\packages\SilverlightToolkitWP.4.2011.8.17\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="PhoneCodeContractsAssemblies, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageTools.0.3\lib\sl3-wp\PhoneCodeContractsAssemblies.dll</HintPath>
+    </Reference>
     <Reference Include="System.Device" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -346,11 +366,9 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />
-  <Target Name="BeforeBuild">
-    <Exec Condition="Exists('$(ProjectDir)packages.config')" Command="&quot;$(SolutionDir)Tools\nuget.exe&quot; install &quot;$(ProjectDir)packages.config&quot; -o &quot;$(SolutionDir)Packages&quot;" />
-  </Target>
-  <UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" AssemblyFile="$(SolutionDir)Tools\NotifyPropertyWeaverMsBuildTask.dll" />
+  <UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" AssemblyFile="$(SolutionDir).tools\NotifyPropertyWeaverMsBuildTask.dll" />
   <Target Name="AfterCompile">
     <NotifyPropertyWeaverMsBuildTask.WeavingTask />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>
