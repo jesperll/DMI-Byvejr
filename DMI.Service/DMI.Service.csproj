@@ -45,8 +45,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\lib\HTMLAgilityPackWP7\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.3\lib\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Devices.Sensors" />
     <Reference Include="Microsoft.Phone" />
@@ -75,6 +75,9 @@
     <Reference Include="System.Xml.Serialization" />
     <Reference Include="NotifyPropertyWeaver">
       <HintPath>$(SolutionDir)Tools\NotifyPropertyWeaver.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Xml.XPath.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
