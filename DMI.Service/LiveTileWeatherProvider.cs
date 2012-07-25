@@ -16,7 +16,7 @@ namespace DMI.Service
 
             var client = new RestClient("http://www.dr.dk/tjenester/drvejret/");
             var request = new RestRequest();
-            request.DateFormat = "yyyyMMddHHmm";            
+            request.DateFormat = "yyyyMMddHHmmss";            
             request.Resource = "Forecast/{latitude}/{longitude}/{date}";
             request.AddUrlSegment("latitude", city.Location.Latitude.ToString(CultureInfo.InvariantCulture));
             request.AddUrlSegment("longitude", city.Location.Longitude.ToString(CultureInfo.InvariantCulture));
